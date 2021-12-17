@@ -26,7 +26,6 @@ def check_line(line):
     return acc
 
 
-
 def main():
     x = np.zeros(4)
     y = np.array(['[', '(', '{', '<'])
