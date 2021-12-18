@@ -51,12 +51,17 @@ def diagonal_line(line, matrix):
     return matrix
 
 
-f = open('input.txt', 'r').read().splitlines()
-lines_array = return_array(f)
-max_val = np.amax(lines_array)
-ground_truth_matrix = np.zeros((max_val+1, max_val+1))
-for line in lines_array:
-     ground_truth_matrix = check_line(line, ground_truth_matrix)
-print(ground_truth_matrix)
+def main():
+    f = open('input.txt', 'r').read().splitlines()
+    lines_array = return_array(f)
+    max_val = np.amax(lines_array)
+    ground_truth_matrix = np.zeros((max_val+1, max_val+1))
+    for line in lines_array:
+        ground_truth_matrix = check_line(line, ground_truth_matrix)
+    print(ground_truth_matrix)
 
-print('\nNumber of dangerous areas: ',len(ground_truth_matrix[ground_truth_matrix>1]))
+    print('\nNumber of dangerous areas: ',len(ground_truth_matrix[ground_truth_matrix>1]))
+
+
+if __name__ == '__main__':
+        main()

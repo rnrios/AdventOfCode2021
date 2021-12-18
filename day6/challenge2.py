@@ -18,10 +18,15 @@ def update_num_fishes(fish_counts, new_fishes):
     return fish_counts
 
 
-f = open('input.txt').readlines()
-initial_num_fishes = [int(x) for x in f[0].split(',') if x != ',']
-fish_dict = Counter(initial_num_fishes)
-fish_counts = np.zeros(9).astype(int)
-for key in fish_dict.keys():
-    fish_counts[key] = fish_dict[key]
-num_lantern_fish(fish_counts, 256)
+def main():
+    f = open('input.txt').readlines()
+    initial_num_fishes = [int(x) for x in f[0].split(',') if x != ',']
+    fish_dict = Counter(initial_num_fishes)
+    fish_counts = np.zeros(9).astype(int)
+    for key in fish_dict.keys():
+        fish_counts[key] = fish_dict[key]
+    num_lantern_fish(fish_counts, 256)
+
+
+if __name__ == '__main__':
+        main()

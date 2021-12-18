@@ -64,22 +64,24 @@ def return_sum(x):
     return np.dot(x, y)
 
 
-f = open('input.txt', 'r').read().splitlines()
-inputs, outputs = [], []
+def main():
+    f = open('input.txt', 'r').read().splitlines()
+    inputs, outputs = [], []
 
-total_sum = 0
-for i, line in enumerate(f):
-    line = line.split(' ')
-    inputs = line[:10]
-    outputs = line[-4:]
-    
-    output_list = []
-    output_dict = create_dict(inputs)
-    for output in outputs:
-        key = check_dict(output, list(output_dict.keys()))
-        output_list.append(output_dict[key])
-    total_sum += return_sum(output_list)
-print('Total sum: ', total_sum)  
+    total_sum = 0
+    for i, line in enumerate(f):
+        line = line.split(' ')
+        inputs = line[:10]
+        outputs = line[-4:]
+        
+        output_list = []
+        output_dict = create_dict(inputs)
+        for output in outputs:
+            key = check_dict(output, list(output_dict.keys()))
+            output_list.append(output_dict[key])
+        total_sum += return_sum(output_list)
+    print('Total sum: ', total_sum)  
 
 
-    
+if __name__ == '__main__':
+        main()

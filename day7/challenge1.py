@@ -9,11 +9,14 @@ def get_least_fuel(x, test_values):
     return fuel_dict
 
 
-f = open('input.txt').readlines()
-pos = [int(x) for x in f[0].split(',') if x!=',']
-x_max = 2*max(pos)
-test_values = range(x_max)
-fuel_dict = get_least_fuel(pos, test_values)
-print(min(fuel_dict.values()))
-print(np.sum(range(1,12)))
+def main():
+    f = open('input.txt').readlines()
+    pos = [int(x) for x in f[0].split(',') if x!=',']
+    x_max = 2*max(pos)
+    test_values = range(x_max)
+    fuel_dict = get_least_fuel(pos, test_values)
+    print(min(fuel_dict.values()))
     
+
+if __name__ == '__main__':
+        main()

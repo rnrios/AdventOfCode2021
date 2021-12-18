@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def num_lantern_fish(array, n):
+def num_lantern_fish(array, n, N=80):
     n -= 1
     array -= 1 
     print('After {} days: \t{}'.format(N-n, array))
@@ -14,8 +14,12 @@ def num_lantern_fish(array, n):
     num_lantern_fish(array, n)
 
 
+def main():
+    f = open('test_input.txt').readlines()
+    initial_num_fishes = np.array([int(x) for x in f[0].split(',') if x != ','])
+    N = 30
+    num_lantern_fish(initial_num_fishes, N)
 
-f = open('test_input.txt').readlines()
-initial_num_fishes = np.array([int(x) for x in f[0].split(',') if x != ','])
-N = 30
-num_lantern_fish(initial_num_fishes, N)
+
+if __name__ == '__main__':
+        main()

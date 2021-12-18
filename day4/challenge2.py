@@ -9,7 +9,7 @@ def return_num_vec(txt_list, start, end, sep):
     return np.array(num_vec)
 
 
-def create_grids():
+def create_grids(f):
     grids = []
     masks = []
     file_len = int((len(f)-1)/6)
@@ -49,19 +49,25 @@ def check_column(mask):
             return True
     return False
 
-f = open('input.txt', 'r').read().splitlines()
-window = np.squeeze(return_num_vec(f, 0, 1, ','))
-grids, masks = create_grids()
-winner_vect = np.zeros(len(grids))
-for num in window:
-    for i, (mask,grid) in enumerate(zip(masks, grids)):
-        mask = update_masks(num, grid, mask)
-        if check_line(mask) or check_column(mask):
-            winner_vect[i] = 1
-            if np.sum(winner_vect) == len(grids):
-                unmarked = np.sum(grid) - np.sum(mask*grid)
-                print('Winning number: {}\t Answer: {}'.format(num, num*unmarked))
-                break
-    else:
-        continue
-    break
+
+def main():
+    f = open('input.txt', 'r').read().splitlines()
+    window = np.squeeze(return_num_vec(f, 0, 1, ','))
+    grids, masks = create_grids(f)
+    winner_vect = np.zeros(len(grids))
+    for num in window:
+        for i, (mask,grid) in enumerate(zip(masks, grids)):
+            mask = update_masks(num, grid, mask)
+            if check_line(mask) or check_column(mask):
+                winner_vect[i] = 1
+                if np.sum(winner_vect) == len(grids):
+                    unmarked = np.sum(grid) - np.sum(mask*grid)
+                    print('Winning number: {}\t Answer: {}'.format(num, num*unmarked))
+                    break
+        else:
+            continue
+        break
+
+
+if __name__ == '__main__':
+        main()
